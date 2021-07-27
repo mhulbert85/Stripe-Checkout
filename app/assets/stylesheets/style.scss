@@ -11,7 +11,8 @@
     display: flex;
     flex-flow: column;
     justify-self: center;
-    width: 35%;
+    width: auto;
+    max-width: 450px;
 }
 
 #checkout-btn {

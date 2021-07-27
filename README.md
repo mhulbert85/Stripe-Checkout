@@ -6,7 +6,7 @@
 `----->>>>>` [**Try the Live Demo**](https://stripe-checkout-rails-6.herokuapp.com/) `<<<<<-----`
 
 #### Instructions
-If you wish to clone this repository and run locally you will need to duplicate the `.env-template` file in you root directory, rename it `.env` and enter your API Keys accordingly.
+If you wish to clone this repository and run locally you will need to duplicate the `.env.template` file in you root directory, rename it `.env` and enter your API Keys accordingly.
 
 ##### Prerequisites
 - Valid Stripe public key & secret key
