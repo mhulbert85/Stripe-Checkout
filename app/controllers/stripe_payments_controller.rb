@@ -20,8 +20,8 @@ class StripePaymentsController < ApplicationController
         quantity: 1,
       }],
       mode: "payment",
-      success_url: "http://localhost:3000",
-      cancel_url: "http://localhost:3000",
+      success_url: root_url,
+      cancel_url: root_url,
     })
     redirect_to session.url
   end
