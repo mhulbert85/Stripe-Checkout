@@ -14,4 +14,5 @@ If you wish to clone this repository and run locally you will need to duplicate 
 - Rails 6.1
 
 #### TODO
-- Add webhooks & display errors/messages etc
+- Add webhooks & display errors/messages
+- write tests

@@ -1,0 +1,11 @@
+<div class="wrapper">
+    <div class="content">
+        <h1>Stripe Checkout</h1>
+        <p>Stripe Checkout is an embeded payment form used in
+            custom websites or applications. The client- and server-side code
+            builds a checkout form to complete a card payment.
+            <%= link_to "view integration guide", "https://stripe.com/docs/payments/integration-builder", target:"_blank" %>
+        </p>
+        <%= button_to 'Redirect to Checkout', create_checkout_session_path, method:'post', id:'checkout-btn' %>
+    </div>
+</div>
