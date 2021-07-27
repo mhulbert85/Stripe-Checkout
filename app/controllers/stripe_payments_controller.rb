@@ -23,6 +23,6 @@ class StripePaymentsController < ApplicationController
       success_url: root_url,
       cancel_url: root_url,
     })
-    redirect_to session.url
+    redirect_to session.url, status: 303
   end
 end
