@@ -9,7 +9,7 @@
 If you wish to clone this repository and run locally you will need to duplicate the `.env.template` file in you root directory, rename it `.env` and enter your API Keys accordingly.
 
 ##### Prerequisites
-- Valid Stripe public key & secret key
+- A valid Stripe secret key
 - Stripe API version : [2020-08-27](https://stripe.com/docs/upgrades#2020-08-27)
 - Rails 6.1
 
