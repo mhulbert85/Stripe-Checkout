@@ -1,6 +1,6 @@
 Rails.configuration.stripe = {
-  secret_key: ENV["STRIPE_SECRET_KEY"],
+  stripe_secret: ENV["STRIPE_SECRET_KEY"],
   webhook_secret: ENV["WEBHOOK_SECRET"],
 }
 
-Stripe.api_key = Rails.configuration.stripe[:secret_key]
+Stripe.api_key = Rails.configuration.stripe[:stripe_secret]
