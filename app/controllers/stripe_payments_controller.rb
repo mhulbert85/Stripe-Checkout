@@ -1,9 +1,12 @@
 class StripePaymentsController < ApplicationController
-  
-  def index; end
 
   def create_checkout_session
+    
+    # get seed data for testing with params 
     product = Product.first
+
+    # create a stripe checkout session and redirect to 3D secure form
+    # https://stripe.com/docs/api/checkout/sessions
     session = Stripe::Checkout::Session.create({
       payment_method_types: ["card"],
       customer_email: "jenny.rosen@example.com",
@@ -13,7 +16,7 @@ class StripePaymentsController < ApplicationController
           product_data: {
             name: product.title,
             description: product.description,
-            images: [ product.image ],
+            images: [product.image],
           },
           unit_amount: product.price * 100,
         },
