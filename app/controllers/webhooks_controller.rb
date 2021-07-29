@@ -39,8 +39,7 @@ class WebhooksController < ApplicationController
       charge_id = event.data.object.id
       puts "Charge #{charge_id} was successful"
     when "checkout.session.completed"
-      checkout_id = event.data.object.id
-      puts "Checkout session #{checkout_id} completed"
+      WebhookMailer.checkout_session_completed(event.data.object).deliver_now
     else
       puts "Unhandled event type: #{event.type}"
     end
