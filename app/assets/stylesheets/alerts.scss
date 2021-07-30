@@ -1,0 +1,27 @@
+.alert {
+    display: flex;
+    padding: 1rem;
+    width: auto;
+    height: 450px;
+    overflow: scroll;
+    position: absolute;
+
+    &-close {
+        color: white;
+        font-weight: bold;
+        font-size: 2.4rem;
+        cursor: pointer;
+        transition: 0.3s;
+        position: fixed;
+    }
+}
+
+$alert-colors: ("success": #04AA6D,"danger": #DC3545);
+
+@each $class, $color in $alert-colors {
+    .alert-#{$class} {
+        background-color: lighten($color, 10%);
+        border-radius: 5px;
+        color: white;
+    }
+}

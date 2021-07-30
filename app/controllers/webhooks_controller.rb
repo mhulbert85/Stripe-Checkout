@@ -1,5 +1,5 @@
 class WebhooksController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token, only: [ :create ]
 
   def create
     payload = request.body.read
@@ -12,11 +12,9 @@ class WebhooksController < ApplicationController
         payload, sig_header, endpoint_secret
       )
     rescue JSON::ParserError => e
-      # Invalid payload
       render json: { message: e }, status: 400
       return
     rescue Stripe::SignatureVerificationError => e
-      # Invalid signature
       render json: { message: e }, status: 400
       return
     end
@@ -24,24 +22,21 @@ class WebhooksController < ApplicationController
     # Handle the event
     case event.type
     when "payment_intent.created"
-      payment_intent = event.data.object.id
-      puts "PaymentIntent #{payment_intent} was created"
+      flash.now[:notice] = event.data.object
     when "payment_intent.succeeded"
-      payment_intent = event.data.object.id
-      puts "PaymentIntent #{payment_intent} was successful"
+      flash.now[:notice] = event.data.object
     when "customer.created"
-      customer_id = event.data.object.id
-      puts "Customer #{customer_id} was created"
+      flash.now[:notice] = event.data.object
     when "customer.updated"
-      customer_id = event.data.object.id
-      puts "Customer #{customer_id} was updated"
+      flash.now[:notice] = event.data.object
     when "charge.succeeded"
-      charge_id = event.data.object.id
-      puts "Charge #{charge_id} was successful"
+      flash.now[:notice] = event.data.object
     when "checkout.session.completed"
+      flash.now[:notice] = event.data.object
       WebhookMailer.checkout_session_completed(event.data.object).deliver_now
     else
       puts "Unhandled event type: #{event.type}"
+      flash.now[:alert] = event.type
     end
     render json: { message: "webhook was successful" }, status: 200
   end

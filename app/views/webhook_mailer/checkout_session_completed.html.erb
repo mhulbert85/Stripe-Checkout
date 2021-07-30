@@ -1,4 +1,4 @@
-<!-- Add unique locals & redirect link and pass to template -->
+<!-- Pass locals & content to template -->
 <%= render layout: 'webhook_mailer/template', 
            locals: {  title: 'Checkout Session Completed', webhook: 'checkout.session.completed' }  do %>
    <pre><%= @event %></pre> 

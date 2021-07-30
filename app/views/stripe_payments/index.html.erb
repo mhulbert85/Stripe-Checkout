@@ -8,4 +8,32 @@
         </p>
         <%= button_to 'Redirect to Checkout', create_checkout_session_path, method:'post', id:'checkout-btn' %>
     </div>
+
+    <!-- Display alerts for incomplete events in red -->
+    <% if flash[:alert].present? %>
+    <pre class="alert alert-danger">
+        <div class="alert-close">&times;</div> 
+        <%= flash[:alert] %>
+    </pre>
+    <% end %>
+
+    <!-- Display alerts for completed events in green -->
+    <% if flash[:notice].present? %>
+    <pre class="alert alert-success">
+        <div class="alert-close">&times;</div>
+        <%= flash[:notice] %>
+    </pre>
+    <% end %>
 </div>
+
+
+
+
+<script>
+    // Close Alert box
+    $('.alert-close').on('click', function () {
+        $(this.parentElement).css({
+            "display": "none"
+        })
+    })
+</script>
