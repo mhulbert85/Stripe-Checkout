@@ -1,5 +1,5 @@
 class WebhooksController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [ :create ]
+  skip_before_action :verify_authenticity_token, only: [:create]
 
   def create
     payload = request.body.read
@@ -22,21 +22,20 @@ class WebhooksController < ApplicationController
     # Handle the event
     case event.type
     when "payment_intent.created"
-      flash.now[:notice] = event.data.object
+      puts "✅  A payment intent was created for $#{event.data.object.amount}".green.bold
     when "payment_intent.succeeded"
-      flash.now[:notice] = event.data.object
+      puts "✅  Payment intent successful".green.bold
     when "customer.created"
-      flash.now[:notice] = event.data.object
+      puts "✅  Customer created".green.bold
     when "customer.updated"
-      flash.now[:notice] = event.data.object
+      puts "✅  Customer updated".green.bold
     when "charge.succeeded"
-      flash.now[:notice] = event.data.object
+      puts "✅  Charge successful!".green.bold
     when "checkout.session.completed"
-      flash.now[:notice] = event.data.object
+      puts "✅  Checkout session completed".green.bold
       WebhookMailer.checkout_session_completed(event.data.object).deliver_now
     else
-      puts "Unhandled event type: #{event.type}"
-      flash.now[:alert] = event.type
+      puts "⚠️  Unhandled event type: #{event.type}".yellow.bold
     end
     render json: { message: "webhook was successful" }, status: 200
   end
