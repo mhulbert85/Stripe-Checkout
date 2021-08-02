@@ -2,7 +2,7 @@ class StripePaymentsController < ApplicationController
 
   def create_checkout_session
     
-    # get seed data for testing with params 
+    # seed data for testing with params 
     product = Product.first
 
     # create a stripe checkout session and redirect to 3D secure form

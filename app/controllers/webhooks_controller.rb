@@ -1,6 +1,9 @@
 class WebhooksController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
 
+  # Send a post request to the stripe server to recieve events. 
+  # Verify the response if from the stripe via http header info
+  # Handle errors
   def create
     payload = request.body.read
     endpoint_secret = Rails.configuration.stripe[:webhook_secret]
@@ -19,7 +22,8 @@ class WebhooksController < ApplicationController
       return
     end
 
-    # Handle the event
+    # If the request is successful, handle predefined events
+    # Events below are specific to the stripe checkout session
     case event.type
     when "payment_intent.created"
       puts "✅  A payment intent was created for $#{event.data.object.amount}".green.bold

@@ -8,9 +8,9 @@ gem 'puma', '~> 5.0'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 5.0'
 gem 'jbuilder', '~> 2.7'
+
 gem 'pry-rails'
 gem 'colorize'
-
 gem 'dotenv-rails' # required for managing credentials safely
 gem 'stripe' # required for checkout integration
 
