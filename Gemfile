@@ -9,10 +9,9 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 5.0'
 gem 'jbuilder', '~> 2.7'
 
-gem 'pry-rails'
-gem 'colorize'
-gem 'dotenv-rails' # required for managing credentials safely
-gem 'stripe' # required for checkout integration
+# Application specific
+gem 'colorize'  # cli output syntax highlighting 
+gem 'stripe'    # ruby wrapper for stripe integrations
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -20,9 +19,13 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails', '~> 5.0.0'
-  gem 'rails-controller-testing'
-  gem 'factory_bot_rails'
+ 
+  # Additional dev/test dependencies 
+  gem 'rspec-rails', '~> 5.0.0'    # bdd framework
+  gem 'rails-controller-testing'   # testing controller actions
+  gem 'factory_bot_rails'          # simplify bdd
+  gem 'pry-rails'                  # format rails cli output
+  gem 'dotenv-rails'               # required for managing credentials safely
 end
 
 group :development do
