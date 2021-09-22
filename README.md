@@ -8,7 +8,7 @@ This demo consists of a simple integration of the stripe prebuilt checkout with 
 [Sendgrid](https://sendgrid.com/) has been integrated to provide email notifications to users, notifications are triggered by stripe webhook events. e.g. users are notified by email when a transaction has been completed.
 
 
-`----->>>>>` [**Try the Live Demo**](https://stripe-checkout-rails-6.herokuapp.com/) `<<<<<-----`
+`----->>>>>` [**Try the Live Demo**](https://mhulbert85-checkout.herokuapp.com/) `<<<<<-----`
 
 #### Instructions
 If you wish to clone this repository and run locally you will need to duplicate the `.env.template` file in you root directory, rename it `.env` and update the environment variables accordingly.
