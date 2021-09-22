@@ -1,0 +1,43 @@
+<div class="container">
+    <header class="my-5">
+        <h1 class="mb-3">Stripe Checkout</h1>
+        <div class="alert alert-info" role="alert">
+            <p>Stripe Checkout is an embeded payment form used in custom websites or applications. The client- and
+                server-side code builds a checkout form to complete a card payment.
+            </p>
+            <%= link_to "integration guide", "https://stripe.com/docs/payments/integration-builder", target:"_blank", class:"alert-link" %>
+        </div>
+        <div class="alert alert-success" role="alert">
+            Click a <strong>Buy Now</strong> button to test the checkout integration
+        </div>
+    </header>
+
+    <div class="row">
+        <div class="col-lg-8 align-self-center">
+            <h6 class="text-muted"><%= @products.count %> products </h6>
+        </div>
+        <div class="col-lg-4">
+            <%= form_tag root_path,  method: :get do %>
+            <div class="input-group mb-3">
+                <%= text_field_tag :title, params[:title], placeholder:'search', class:"form-control" %>
+                <%= submit_tag 'search', class:"btn btn-primary" %>
+            </div>
+            <% end %>
+        </div>
+
+        <% @products.each do | product | %>
+        <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="card text-center my-3 shadow" style="">
+                <%= image_tag product.image_url , class:"card-img-top", alt: product.title %>
+                <div class="card-body">
+                    <h5 class="card-title"><%= product.title %></h5>
+                    <p class="card-text">$ <%= product.unit_amount / 100 %></p>
+                    <%= button_to 'Buy Now', create_checkout_session_path, method: :post,  params:{ id: product.id }, class:"btn btn-primary w-100" %><%=  %>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>
+
+<%= render partial:"layouts/navigation" %>

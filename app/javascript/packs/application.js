@@ -7,5 +7,4 @@ import Rails from "@rails/ujs"
 
 Rails.start()
 
-// Import NPM packages
-import "jquery"
+import "scss/application"

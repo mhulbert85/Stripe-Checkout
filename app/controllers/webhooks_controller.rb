@@ -37,10 +37,10 @@ class WebhooksController < ApplicationController
       puts "✅  Charge successful!".green.bold
     when "checkout.session.completed"
       puts "✅  Checkout session completed".green.bold
-      WebhookMailer.checkout_session_completed(event.data.object).deliver_now
+      # WebhookMailer.checkout_session_completed(event.data.object).deliver_now
     else
       puts "⚠️  Unhandled event type: #{event.type}".yellow.bold
     end
-    render json: { message: "webhook was successful" }, status: 200
+    render json: { message: "success" }, status: 200
   end
 end
